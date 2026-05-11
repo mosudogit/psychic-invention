@@ -1,0 +1,105 @@
+[colors]
+bg         = #1e1e2e
+bg-alt     = #313244
+fg         = #cdd6f4
+fg-dim     = #6c7086
+accent     = #cba6f7
+green      = #a6e3a1
+yellow     = #f9e2af
+red        = #f38ba8
+blue       = #89b4fa
+teal       = #94e2d5
+
+[bar/main]
+width            = 100%
+height           = 32
+radius           = 0
+fixed-center     = true
+
+background       = ${colors.bg}
+foreground       = ${colors.fg}
+
+line-size        = 2
+line-color       = ${colors.accent}
+
+border-size      = 0
+padding-left     = 2
+padding-right    = 2
+module-margin    = 1
+
+font-0           = JetBrainsMono Nerd Font:size=10:weight=regular;2
+font-1           = JetBrainsMono Nerd Font:size=14;3
+font-2           = Noto Color Emoji:scale=10;2
+
+modules-left     = bspwm
+modules-center   = date
+modules-right    = pulseaudio network cpu memory
+
+tray-position    = right
+tray-padding     = 4
+
+cursor-click     = pointer
+cursor-scroll    = ns-resize
+
+wm-restack       = bspwm
+override-redirect = false
+
+[module/bspwm]
+type              = internal/bspwm
+label-focused     = %name%
+label-focused-foreground = ${colors.fg}
+label-focused-background = ${colors.bg-alt}
+label-focused-padding = 2
+label-occupied    = %name%
+label-occupied-foreground = ${colors.fg-dim}
+label-occupied-padding = 2
+label-empty       = %name%
+label-empty-foreground = ${colors.fg-dim}
+label-empty-padding = 2
+label-urgent      = %name%
+label-urgent-foreground = ${colors.red}
+label-urgent-padding = 2
+
+[module/date]
+type             = internal/date
+interval         = 1
+date             = %a %d %b
+time             = %H:%M
+label            = %date%  %time%
+label-foreground = ${colors.fg}
+
+[module/cpu]
+type             = internal/cpu
+interval         = 2
+format           = <label>
+label            = 󰻠 %percentage%%
+label-foreground = ${colors.blue}
+warn-percentage  = 80
+label-warn-foreground = ${colors.red}
+
+[module/memory]
+type             = internal/memory
+interval         = 3
+format           = <label>
+label            = 󰍛 %percentage_used%%
+label-foreground = ${colors.teal}
+warn-percentage  = 85
+label-warn-foreground = ${colors.red}
+
+[module/network]
+type             = internal/network
+interface-type   = wireless
+interval         = 3
+label-connected  = 󰤨 %essid%
+label-connected-foreground = ${colors.green}
+label-disconnected = 󰤭
+label-disconnected-foreground = ${colors.fg-dim}
+
+[module/pulseaudio]
+type             = internal/pulseaudio
+format-volume    = <label-volume>
+label-volume     = 󰕾 %percentage%%
+label-volume-foreground = ${colors.yellow}
+label-muted      = 󰖁 mute
+label-muted-foreground = ${colors.fg-dim}
+click-right      = pavucontrol
