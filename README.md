@@ -1,2 +1,2 @@
 # psychic-invention
-Chimera Linux Dots made my Claude (haven’t tested just checking out)
+Chimera Linux Dots (idk if they work i js wrote it)
